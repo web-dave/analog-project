@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { routes } from '@analogjs/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,9 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
   template: `
     <nav>
-      <a href="/">Home</a>
+      @for(route of routes;track route.path){
+      <a [href]="'/' + route.path">{{ route.path?.toUpperCase() || 'HOME' }}</a>
+      | }
     </nav>
     <router-outlet></router-outlet>
   `,
@@ -27,4 +30,6 @@ import { RouterOutlet } from '@angular/router';
     `,
   ],
 })
-export class AppComponent {}
+export class AppComponent {
+  routes = routes;
+}

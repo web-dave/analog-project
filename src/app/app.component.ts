@@ -32,4 +32,9 @@ import { routes } from '@analogjs/router';
 })
 export class AppComponent {
   routes = routes;
+  constructor() {
+    // setTimeout(() => {
+    //   console.log(routes);
+    // }, 1500);
+  }
 }
